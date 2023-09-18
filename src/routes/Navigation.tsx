@@ -6,6 +6,7 @@ import {
 	Navigate,
 } from 'react-router-dom';
 import ReactLogo from '../assets/react-logo.svg';
+import { LazyPage1, LazyPage2, LazyPage3 } from '../01-lazyload';
 
 export const Navigation = () => {
 	return (
@@ -21,26 +22,26 @@ export const Navigation = () => {
 					<ul>
 						<li>
 							<NavLink
-								to='/'
+								to='/lazypage1'
 								className={({ isActive }) => (isActive ? 'nav-active' : '')}
 							>
-								Home
+								LazyPage1
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
-								to='/about'
+								to='/lazypage2'
 								className={({ isActive }) => (isActive ? 'nav-active' : '')}
 							>
-								About
+								LazyPage2
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
-								to='/users'
+								to='/lazypage3'
 								className={({ isActive }) => (isActive ? 'nav-active' : '')}
 							>
-								Users
+								LazyPage3
 							</NavLink>
 						</li>
 					</ul>
@@ -48,22 +49,22 @@ export const Navigation = () => {
 
 				<Routes>
 					<Route
-						path='/about'
-						element={<h1>About</h1>}
+						path='/lazypage1'
+						element={<LazyPage1 />}
 					/>
 					<Route
-						path='/users'
-						element={<h1>Users</h1>}
+						path='/lazypage2'
+						element={<LazyPage2 />}
 					/>
 					<Route
-						path='/'
-						element={<h1>Home</h1>}
+						path='/lazypage3'
+						element={<LazyPage3 />}
 					/>
 					<Route
 						path='/*'
 						element={
 							<Navigate
-								to='/'
+								to='/lazypage1'
 								replace
 							/>
 						}
