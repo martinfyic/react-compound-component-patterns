@@ -17,35 +17,17 @@ export const useShoppingCart = () => {
 		product,
 	}: onProductCountChangeProps) => {
 		setShoppingCart(oldShoppingCard => {
-			const productInCart: ProductInCart = oldShoppingCard[product.id] || {
-				...product,
-				count: 0,
-			};
-
-			if (Math.max(productInCart.count + count, 0) > 0) {
-				productInCart.count += count;
+			// Elimninar objeto cuando el count es 0
+			if (count === 0) {
+				const { [product.id]: toDelete, ...rest } = oldShoppingCard;
 				return {
-					...oldShoppingCard,
-					[product.id]: productInCart,
+					...rest,
 				};
 			}
-
-			//Borrar Porducto
-			const { [product.id]: toDelete, ...rest } = oldShoppingCard;
-			return rest;
-
-			// opcion 2
-			// Elimninar objeto cuando el count es 0
-			// if (count === 0) {
-			// 	const { [product.id]: toDelete, ...rest } = oldShoppingCard;
-			// 	return {
-			// 		...rest,
-			// 	};
-			// }
-			// return {
-			// 	...oldShoppingCard,
-			// 	[product.id]: { ...product, count },
-			// };
+			return {
+				...oldShoppingCard,
+				[product.id]: { ...product, count },
+			};
 		});
 	};
 
