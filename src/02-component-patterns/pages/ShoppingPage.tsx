@@ -5,63 +5,47 @@ import {
 	ProductTitle,
 } from '../components';
 import { products } from '../data';
-import { useShoppingCart } from '../hooks';
 import '../styles/custom-styles.css';
 
-export const ShoppingPage = () => {
-	const { onProductCountChange, shoppingCart } = useShoppingCart();
+const product = products[0];
 
+export const ShoppingPage = () => {
 	return (
 		<div>
 			<h1>Shopping Store</h1>
 			<hr />
-			<div
-				style={{
-					display: 'flex',
-					flexDirection: 'row',
-					flexWrap: 'wrap',
+			<ProductCard
+				key={product.id}
+				product={product}
+				className='bg-dark text-white'
+				initialValues={{
+					count: 4,
+					maxCount: 10,
 				}}
 			>
-				{products.map(product => (
-					<ProductCard
-						key={product.id}
-						product={product}
-						className='bg-dark text-white'
-						onChange={onProductCountChange}
-						value={shoppingCart[product.id]?.count || 0}
-					>
+				{({ reset, incresBy, count, isMaxCountReached, maxCount }) => (
+					<>
 						<ProductImage className='custom-image' />
 						<ProductTitle
 							title='Cafe'
 							className='text-white text-bold'
 						/>
 						<ProductButtons className='custom-buttoms' />
-					</ProductCard>
-				))}
-			</div>
 
-			{/* Tarjeta de carrito */}
-			<div className='shopping-cart'>
-				{Object.entries(shoppingCart).map(([key, product]) => (
-					<ProductCard
-						key={key}
-						product={product}
-						className='bg-dark text-white'
-						style={{ width: '150px' }}
-						value={product.count}
-						onChange={onProductCountChange}
-					>
-						<ProductImage className='custom-image' />
-						<ProductButtons
-							className='custom-buttoms'
-							style={{
-								display: 'flex',
-								justifyContent: 'center',
-							}}
-						/>
-					</ProductCard>
-				))}
-			</div>
+						<button onClick={reset}>Reset</button>
+						<button onClick={() => incresBy(-2)}>-2</button>
+						<button
+							onClick={() => incresBy(+2)}
+							hidden={isMaxCountReached}
+						>
+							+2
+						</button>
+						<span>
+							{count} - {maxCount}
+						</span>
+					</>
+				)}
+			</ProductCard>
 		</div>
 	);
 };
