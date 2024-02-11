@@ -5,8 +5,14 @@ import {
 	NavLink,
 	Navigate,
 } from 'react-router-dom';
+import {
+	RegisterPage,
+	FormikBasicPage,
+	FormikYupPage,
+	FormikComponents,
+	FormikAbstract,
+} from '../03-forms/pages';
 import ReactLogo from '../assets/react-logo.svg';
-import { RegisterPage } from '../03-forms/pages';
 
 export const Navigation = () => {
 	return (
@@ -33,15 +39,39 @@ export const Navigation = () => {
 								to='/register'
 								className={({ isActive }) => (isActive ? 'nav-active' : '')}
 							>
-								Register Page
+								Register
 							</NavLink>
 						</li>
 						<li>
 							<NavLink
-								to='/users'
+								to='/formik-basic'
 								className={({ isActive }) => (isActive ? 'nav-active' : '')}
 							>
-								Users
+								Formik Basic
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to='/formik-yup'
+								className={({ isActive }) => (isActive ? 'nav-active' : '')}
+							>
+								Formik Yup
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to='/formik-components'
+								className={({ isActive }) => (isActive ? 'nav-active' : '')}
+							>
+								Formik Components
+							</NavLink>
+						</li>
+						<li>
+							<NavLink
+								to='/formik-abstract'
+								className={({ isActive }) => (isActive ? 'nav-active' : '')}
+							>
+								Formik Abstract
 							</NavLink>
 						</li>
 					</ul>
@@ -53,8 +83,20 @@ export const Navigation = () => {
 						element={<RegisterPage />}
 					/>
 					<Route
-						path='/users'
-						element={<h1>Users</h1>}
+						path='/formik-yup'
+						element={<FormikYupPage />}
+					/>
+					<Route
+						path='/formik-basic'
+						element={<FormikBasicPage />}
+					/>
+					<Route
+						path='/formik-components'
+						element={<FormikComponents />}
+					/>
+					<Route
+						path='/formik-abstract'
+						element={<FormikAbstract />}
 					/>
 					<Route
 						path='/'
