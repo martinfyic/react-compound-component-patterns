@@ -49,6 +49,6 @@ nav li a {
 }
 
 .nav-active {
-	color: grey;
+	color: #00d8ff;
 	transition: all 0.3s ease-out;
 }

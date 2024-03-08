@@ -1,0 +1,91 @@
+[
+	{
+		"type": "input",
+		"inputType": "text",
+		"name": "firstName",
+		"placeHolder": "Jon",
+		"label": "First Name",
+		"value": "",
+		"validations": [
+			{
+				"type": "required"
+			},
+			{
+				"type": "minLength",
+				"value": 3
+			}
+		]
+	},
+	{
+		"type": "input",
+		"inputType": "text",
+		"name": "lastName",
+		"placeHolder": "Doe",
+		"label": "Last Name",
+		"value": "",
+		"validations": [
+			{
+				"type": "required"
+			},
+			{
+				"type": "minLength",
+				"value": 3
+			}
+		]
+	},
+	{
+		"type": "input",
+		"inputType": "email",
+		"name": "email",
+		"placeHolder": "jondoe@example.com",
+		"label": "Email",
+		"value": "",
+		"validations": [
+			{
+				"type": "required"
+			},
+			{
+				"type": "email"
+			}
+		]
+	},
+	{
+		"type": "input",
+		"inputType": "password",
+		"name": "password",
+		"placeHolder": "Password",
+		"label": "Password",
+		"value": "",
+		"validations": [
+			{
+				"type": "required"
+			}
+		]
+	},
+	{
+		"type": "select",
+		"inputType": "select",
+		"name": "favoritGame",
+		"label": "Favorite Game",
+		"value": "",
+		"options": [
+			{
+				"id": 1,
+				"label": "Super Smash"
+			},
+			{
+				"id": 2,
+				"label": "Meta Gear"
+			},
+			{
+				"id": 3,
+				"label": "Resident Evil"
+			}
+		],
+		"validations": [
+			{
+				"type": "required"
+			}
+		]
+	}
+]
